@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="mainfile.php" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" backupGlobals="false" backupStaticAttributes="false" processIsolation="false" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage includeUncoveredFiles="true">
+    <include>
+      <directory>core</directory>
+      <directory>htdocs</directory>
+      <directory>include</directory>
+      <directory>libraries</directory>
+      <directory>plugins</directory>
+    </include>
+    <report>
+      <clover outputFile="storage/log/clover.xml"/>
+    </report>
+  </coverage>
+  <testsuites>
+    <testsuite name="All">
+      <directory suffix="Test.php">tests/libraries/</directory>
+      <directory suffix="Test.php">tests/core/</directory>
+    </testsuite>
+  </testsuites>
+  <logging/>
+  <php>
+    <server name="REMOTE_ADDR" value="0.0.0.0"/>
+  </php>
+</phpunit>
