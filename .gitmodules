@@ -1,0 +1,7 @@
+[submodule "impresscms"]
+	path = impresscms
+	url = git@github.com:ImpressCMS/impresscms.git
+
+[submodule ".homestead"]
+	path = .homestead
+	url = git@github.com:laravel/homestead.git

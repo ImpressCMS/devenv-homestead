@@ -23,7 +23,7 @@ keys:
 
 # Folders that should be mapped between host and guest
 folders:
-  - map: ./
+  - map: ./impresscms/
     to: /home/vagrant/impresscms
 
 # Site paths that will be available

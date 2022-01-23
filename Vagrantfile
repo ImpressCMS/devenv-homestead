@@ -59,12 +59,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     config.trigger.after [:provision, :up] do |trigger|
-    	exists = File.exist?('.env')
+    	exists = File.exist?('impresscms/.env')
     	trigger.name = "Checking if .env file exist (if not creating)"
     	trigger.info = exists ? ".env already exists" : ".env was created"
     	trigger.ruby do |env,machine|
 			unless exists
-				File.write ".env", <<~CONTENT
+				File.write "impresscms/.env", <<~CONTENT
 					# This file was automatic generated from Vagrantfile
 					# If you need to regenerate it, delete and run vagrant provision
 					DB_TYPE=pdo.mysql
