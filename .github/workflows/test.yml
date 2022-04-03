@@ -40,7 +40,7 @@ jobs:
       - name: Running CURL command
         id: curl_fetch
         run: |          
-          content=$(curl -Is https://localhost:8000/)
+          content=$(curl -Is http://localhost:8000/)
           content="${content//'%'/'%25'}"
           content="${content//$'\n'/'%0A'}"
           content="${content//$'\r'/'%0D'}"
