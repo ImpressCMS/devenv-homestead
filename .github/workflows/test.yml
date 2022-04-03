@@ -24,6 +24,12 @@ jobs:
           key: ${{ runner.os }}-vagrant-${{ hashFiles('Vagrantfile') }}
           restore-keys: |
             ${{ runner.os }}-vagrant-
+            
+      - name: Generate SSH key if not exist
+        run: |
+          if [[ !-f "~/.ssh/id_rsa" ]; then
+            ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
+          fi;
 
       - name: Show Vagrant version
         run: vagrant --version
