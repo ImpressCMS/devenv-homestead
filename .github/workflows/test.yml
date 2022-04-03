@@ -27,7 +27,7 @@ jobs:
             
       - name: Generate SSH key if not exist
         run: |
-          if [[ !-f "~/.ssh/id_rsa" ]; then
+          if [[ ! -f "~/.ssh/id_rsa" ]]; then
             ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
           fi;
 
