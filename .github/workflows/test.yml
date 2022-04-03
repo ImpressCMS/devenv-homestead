@@ -43,5 +43,5 @@ jobs:
           curl_fetch="${curl_fetch//'%'/'%25'}";
           curl_fetch="${curl_fetch//$'\n'/'%0A'}";
           curl_fetch="${curl_fetch//$'\r'/'%0D'}";
-          curl_code=$(echo "${curl_fetch}" | head -1 | grep -o '[0-9][0-9][0-9]');
-          [[ "${{ curl_code }}" == "200" ]] || [[ "${{ curl_code }}" == "302" ]];
+          curl_code=$(echo "$curl_fetch" | head -1 | grep -o '[0-9][0-9][0-9]');
+          [[ "$curl_code" == "200" ]] || [[ "$curl_code" == "302" ]];
