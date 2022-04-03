@@ -36,22 +36,12 @@ jobs:
 
       - name: Run vagrant up
         run: vagrant up
-        
-      - name: Running CURL command
-        id: curl_fetch
-        run: |          
-          content=$(curl -Is http://localhost:8000/)
-          content="${content//'%'/'%25'}"
-          content="${content//$'\n'/'%0A'}"
-          content="${content//$'\r'/'%0D'}"
-          echo "::set-output name=curl_fetch::$content"
-          
-      - name: Getting curl return code
-        id: curl_code
-        run: |
-          content=$(echo "${{ needs.test.outputs.curl_fetch }}" | head -1 | grep -o '[0-9][0-9][0-9]')
-          echo "::set-output name=curl_code::$content"
 
       - name: test if running
         run: |
-          [[ "${{ needs.test.outputs.curl_code }}" == "200" ]];
+          curl_fetch=$(curl -Is http://localhost:8000/);
+          curl_fetch="${curl_fetch//'%'/'%25'}";
+          curl_fetch="${curl_fetch//$'\n'/'%0A'}";
+          curl_fetch="${curl_fetch//$'\r'/'%0D'}";
+          curl_code=$(echo "${curl_fetch}" | head -1 | grep -o '[0-9][0-9][0-9]');
+          [[ "${{ curl_code }}" == "200" ]] || [[ "${{ curl_code }}" == "302" ]];
