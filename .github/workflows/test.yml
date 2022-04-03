@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checking out repo...
         uses: actions/checkout@v2
+        with:
+          submodules: recursive
         
       - name: Installing required packages...
         run: brew install openssl curl
