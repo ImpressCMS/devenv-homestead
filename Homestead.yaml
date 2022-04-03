@@ -1,5 +1,5 @@
 # What IP should be used for virtual server?
-ip: "192.168.10.108"
+ip: "192.168.56.17"
 
 # How many memory should be used for virtual server?
 memory: 3000
