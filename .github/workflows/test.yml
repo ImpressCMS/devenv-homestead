@@ -42,3 +42,6 @@ jobs:
           curl_code=$(curl -Is http://localhost:8000/ | head -1 | grep -o '[0-9][0-9][0-9]');         
           echo "::set-output name=curl_code::$curl_code";
           [[ "$curl_code" == "200" ]] || [[ "$curl_code" == "302" ]];
+          
+      - name: Run vagrant halt
+        run: vagrant halt --force
