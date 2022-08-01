@@ -54,7 +54,8 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: hmarr/auto-approve-action@v2
+      - name: Auto approve
+        uses: hmarr/auto-approve-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -64,6 +65,7 @@ jobs:
       - auto-approve
     if: github.event.review.state == 'approved'
     steps:
-      - uses: alexwilson/enable-github-automerge-action@main
+      - name: Enable Github Automerge
+        uses: alexwilson/enable-github-automerge-action@1.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
